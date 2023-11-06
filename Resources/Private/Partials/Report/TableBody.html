@@ -1,0 +1,71 @@
+{namespace belog=TYPO3\CMS\Belog\ViewHelpers}
+<f:for each="{logEntries}" as="logEntry" key="key" iteration="iterator">
+	<tr style="background-color: {f:if(condition: iterator.isEven, then: '#f7f7f7', else: '#ffffff' )}">
+
+		<f:comment>**********************************Icon**********************************</f:comment>
+		<td style="padding: 5px; border-left: 1px solid #f7f7f7;">
+			<f:comment>
+				'0' => '',
+				'1' => \TYPO3\CMS\Backend\Template\DocumentTemplate::STATUS_ICON_WARNING,
+				'2' => \TYPO3\CMS\Backend\Template\DocumentTemplate::STATUS_ICON_ERROR,
+				'3' => \TYPO3\CMS\Backend\Template\DocumentTemplate::STATUS_ICON_ERROR
+			</f:comment>
+			
+			<f:if condition="{logEntry.error} == 1">
+				<span style="color: #FCC52D; font-size: 200%; text-align: center;">
+				&#9888;
+				</span>
+			</f:if>
+			<f:if condition="{logEntry.error} == 2">
+				<span style="color: #FC2D2D; font-size: 200%; text-align: center;">
+				&#9888;
+				</span>
+			</f:if>
+			<f:if condition="{logEntry.error} == 3">
+				<span style="color: #FC2D2D; font-size: 200%; text-align: center;">
+				&#9888;
+				</span>
+			</f:if>
+		</td>
+		
+		<f:comment>**********************************Time**********************************</f:comment>
+		<td style="padding: 5px; border-left: 1px solid {f:if(condition: iterator.isEven, then: '#ffffff', else: '#f7f7f7' )}; white-space: nowrap;">
+			<f:format.date format="d.m.Y H:i:s">@{logEntry.tstamp}</f:format.date>
+		</td>
+		
+		<f:comment>**********************************Message**********************************</f:comment>
+		<td style="padding: 5px; border-left: 1px solid {f:if(condition: iterator.isEven, then: '#ffffff', else: '#f7f7f7' )}; border-right: 1px solid {f:if(condition: iterator.isEven, then: '#ffffff', else: '#f7f7f7' )};">
+			<f:if condition="{logEntry.details}">
+				<belog:formatDetails logEntry="{logEntry}" />
+			</f:if>
+			<f:if condition="{logEntry.detailsNumber} > 0">
+				(msg#{logEntry.type}.{logEntry.action}.{logEntry.detailsNumber})
+			</f:if>
+		</td>
+		
+		<f:comment>**********************************User**********************************</f:comment>
+		<td style="padding: 5px; border-right: 1px solid {f:if(condition: iterator.isEven, then: '#ffffff', else: '#f7f7f7' )}; white-space: nowrap;">
+			<f:if condition="{belog:username(uid:logEntry.backendUserUid)}">
+				<f:then>
+					<belog:username uid="{logEntry.backendUserUid}" />
+				</f:then>
+				<f:else>
+					<f:translate key="LLL:EXT:form4_syslog_report/Resources/Private/Language/locallang.xlf:user.anonymous" /> [{logEntry.backendUserUid}]
+				</f:else>
+			</f:if>
+		</td>
+		
+		<f:comment>**********************************Type/Action**********************************</f:comment>
+		<td style="padding: 5px; border-right: 1px solid #f7f7f7;">
+			<span style="white-space: nowrap;">
+				<f:translate key="LLL:EXT:belog/Resources/Private/Language/locallang.xlf:type_{logEntry.type}">[{logEntry.type}]</f:translate>
+			</span>
+			/
+			<span style="white-space: nowrap;">
+				<f:format.raw>
+					<f:translate key="LLL:EXT:belog/Resources/Private/Language/locallang.xlf:action_{logEntry.type}_{logEntry.action}">[{logEntry.action}]</f:translate>
+				</f:format.raw>
+			</span>
+		</td>
+	</tr>
+</f:for>

@@ -1,0 +1,89 @@
+<h2>{title}</h2>
+
+<p style="color: #666666; font-weight: bold;">
+	From: {start -> f:format.date(format: 'd.m.Y - H:i')}<br/>
+	To: {end -> f:format.date(format: 'd.m.Y - H:i')}
+</p>
+
+<f:if condition="{logEntriesError}">
+	<f:then>
+		<h2 style="color: #666666; font-weight: bold;"><f:translate key="LLL:EXT:form4_syslog_report/Resources/Private/Language/locallang.xlf:headline.errors" /></h2>
+
+		<f:for each="{logEntriesError}" as="pidEntry" key="pid">
+
+			<f:for each="{pidEntry}" as="logEntriesErrorDay" key="dayTimestamp">
+				<h3 style="color: #666666; font-weight: bold;">
+					<f:format.date format="d.m.Y">@{dayTimestamp}</f:format.date>
+				</h3>
+				<table style="width: 100%; border: 1px solid #d7d7d7; border-spacing: 0;">
+					<f:render partial="Report/TableHeader" />
+					<f:render partial="Report/TableBody" arguments="{logEntries: logEntriesErrorDay}" />
+				</table>
+			</f:for>
+
+		</f:for>
+	</f:then>
+	<f:else>
+		<h2 style="color: #666666; font-weight: bold;"><f:translate key="LLL:EXT:form4_syslog_report/Resources/Private/Language/locallang.xlf:headline.noErrors" /></h2>
+	</f:else>
+</f:if>
+
+<f:if condition="{logEntriesWarning}">
+	<f:then>
+		<h2 style="color: #666666; font-weight: bold;"><f:translate key="LLL:EXT:form4_syslog_report/Resources/Private/Language/locallang.xlf:headline.warnings" /></h2>
+
+		<f:for each="{logEntriesWarning}" as="pidEntry" key="pid">
+
+			<f:for each="{pidEntry}" as="logEntriesErrorDay" key="dayTimestamp">
+				<h3 style="color: #666666; font-weight: bold;">
+					<f:format.date format="d.m.Y">@{dayTimestamp}</f:format.date>
+				</h3>
+				<table style="width: 100%; border: 1px solid #d7d7d7; border-spacing: 0;">
+					<f:render partial="Report/TableHeader" />
+					<f:render partial="Report/TableBody" arguments="{logEntries: logEntriesErrorDay}" />
+				</table>
+			</f:for>
+
+		</f:for>
+	</f:then>
+	<f:else>
+		<h2 style="color: #666666; font-weight: bold;"><f:translate key="LLL:EXT:form4_syslog_report/Resources/Private/Language/locallang.xlf:headline.noWarnings" /></h2>
+	</f:else>
+</f:if>
+
+<f:if condition="{logEntriesPages}">
+	<h2 style="color: #666666; font-weight: bold;"><f:translate key="LLL:EXT:form4_syslog_report/Resources/Private/Language/locallang.xlf:headline.clearcachepages" /></h2>
+	<table style="width: 100%; border: 1px solid #d7d7d7; border-spacing: 0;">
+		<f:render partial="Report/TableHeader" />
+		<f:render partial="Report/TableBody" arguments="{logEntries: logEntriesPages}" />
+	</table>
+</f:if>
+
+<f:if condition="{logEntriesAll}">
+	<h2 style="color: #666666; font-weight: bold;"><f:translate key="LLL:EXT:form4_syslog_report/Resources/Private/Language/locallang.xlf:headline.clearcacheall" /></h2>
+	<table style="width: 100%; border: 1px solid #d7d7d7; border-spacing: 0;">
+		<f:render partial="Report/TableHeader" />
+		<f:render partial="Report/TableBody" arguments="{logEntries: logEntriesAll}" />
+	</table>
+</f:if>
+
+<f:if condition="{logEntriesPage}">
+	<h2 style="color: #666666; font-weight: bold;"><f:translate key="LLL:EXT:form4_syslog_report/Resources/Private/Language/locallang.xlf:headline.clearcachepage" /></h2>
+	<f:for each="{logEntriesPage}" as="logEntryPage" key="key">
+		<h3><f:translate key="LLL:EXT:form4_syslog_report/Resources/Private/Language/locallang.xlf:headline.clearcachepage.subheadline" arguments="{0: key}" /></h3>
+		<table style="width: 100%; border: 1px solid #d7d7d7; border-spacing: 0;">
+			<f:render partial="Report/TableHeader" />
+			<f:render partial="Report/TableBody" arguments="{logEntries: logEntryPage}" />
+		</table>
+	</f:for>
+</f:if>
+
+<f:if condition="{customEntries}">
+	<f:for each="{customEntries}" as="entries">
+		<h2 style="color: #666666; font-weight: bold;">{entries.headline}</h2>
+		<table style="width: 100%; border: 1px solid #d7d7d7; border-spacing: 0;">
+			<f:render partial="Report/TableHeader" />
+			<f:render partial="Report/TableBody" arguments="{logEntries: entries.logEntries}" />
+		</table>
+	</f:for>
+</f:if>

@@ -1,0 +1,25 @@
+{
+  "name": "form4/form4-syslog-report",
+  "type": "typo3-cms-extension",
+  "minimum-stability": "stable",
+  "version": "11.0.0",
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://composer.typo3.org"
+    }
+  ],
+  "require": {
+    "typo3/cms-core": "v11.5.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "FORM4\\Form4SyslogReport\\": "Classes"
+    }
+  },
+  "extra": {
+    "typo3/cms": {
+      "extension-key": "form4_syslog_report"
+    }
+  }
+}
