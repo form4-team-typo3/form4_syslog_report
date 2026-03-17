@@ -1,0 +1,22 @@
+{
+  "name": "form4/form4-syslog-report",
+  "type": "typo3-cms-extension",
+  "description": "TYPO3 extension to send email reports of system log entries via console command or scheduler task",
+  "minimum-stability": "stable",
+  "version": "13.4.0",
+  "license": "GPL-2.0-or-later",
+  "require": {
+    "php": "^8.1 || ^8.2 || ^8.3",
+    "typo3/cms-core": "^13.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "FORM4\\Form4SyslogReport\\": "Classes"
+    }
+  },
+  "extra": {
+    "typo3/cms": {
+      "extension-key": "form4_syslog_report"
+    }
+  }
+}
