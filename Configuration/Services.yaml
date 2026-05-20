@@ -1,0 +1,17 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  FORM4\Form4SyslogReport\:
+    resource: '../Classes/*'
+    exclude: '../Classes/Domain/Model/*'
+
+  FORM4\Form4SyslogReport\Command\ReportCommand:
+    tags:
+      - name: 'console.command'
+        command: 'form4_syslog_report:report'
+        description: 'Send a sys_log report by email'
+        schedulable: true
+        hidden: false

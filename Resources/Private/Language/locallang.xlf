@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" product-name="form4_syslog_report">
+		<header/>
+		<body>
+
+		<!-- E-Mail Headlines -->
+			<trans-unit id="headline.clearcachepages">
+				<source>Flush frontend caches</source>
+			</trans-unit>
+			<trans-unit id="headline.clearcacheall">
+				<source>Flush general caches</source>
+			</trans-unit>
+			<trans-unit id="headline.clearcachepage">
+				<source>Flush caches of single pages</source>
+			</trans-unit>
+			<trans-unit id="headline.clearcachepage.subheadline">
+				<source>Page Uid: %s</source>
+			</trans-unit>
+			<trans-unit id="headline.errors">
+				<source>Errors</source>
+			</trans-unit>
+			<trans-unit id="headline.warnings">
+				<source>Warnings</source>
+			</trans-unit>
+
+		<!-- E-Mail Data -->
+			<trans-unit id="user.anonymous">
+				<source>Anonymous</source>
+			</trans-unit>
+
+		<!-- Table Header -->
+			<trans-unit id="table.tstamp">
+				<source>Time</source>
+			</trans-unit>
+			<trans-unit id="table.user">
+				<source>User</source>
+			</trans-unit>
+			<trans-unit id="table.message">
+				<source>Details</source>
+			</trans-unit>
+			<trans-unit id="table.type">
+				<source>Type</source>
+			</trans-unit>
+			<trans-unit id="table.action">
+				<source>Action</source>
+			</trans-unit>
+
+		</body>
+	</file>
+</xliff>

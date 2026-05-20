@@ -1,0 +1,5 @@
+# cat=form4_syslog_report//001; type=input; label= base url of interface
+senderEmailAddress = noreply@localhost
+
+# cat=form4_syslog_report//002; type=input; label= base url of interface
+senderName = FORM4 Syslog Reporter
