@@ -1,0 +1,27 @@
+{
+  "name": "form4/form4-syslog-report",
+  "type": "typo3-cms-extension",
+  "description": "TYPO3 extension: sends e-mail reports about sys_log entries (scheduler task or CLI).",
+  "homepage": "https://extensions.typo3.org/extension/form4_syslog_report",
+  "support": {
+    "source": "https://github.com/form4-team-typo3/form4_syslog_report",
+    "issues": "https://github.com/form4-team-typo3/form4_syslog_report/issues"
+  },
+  "minimum-stability": "stable",
+  "version": "14.0.0",
+  "license": "GPL-2.0-or-later",
+  "require": {
+    "php": "^8.2 || ^8.3 || ^8.4",
+    "typo3/cms-core": "^14.3"
+  },
+  "autoload": {
+    "psr-4": {
+      "FORM4\\Form4SyslogReport\\": "Classes"
+    }
+  },
+  "extra": {
+    "typo3/cms": {
+      "extension-key": "form4_syslog_report"
+    }
+  }
+}

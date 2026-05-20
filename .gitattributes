@@ -1,0 +1,5 @@
+.gitlab-ci.yml     export-ignore
+.ddev/             export-ignore
+.idea/             export-ignore
+Build/             export-ignore
+Deployment/        export-ignore
